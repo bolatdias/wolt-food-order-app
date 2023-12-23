@@ -10,13 +10,13 @@ public class UserProfile {
     private Long pollCount;
     private Long voteCount;
 
-    public UserProfile(Long id, String username, String name, Instant joinedAt, Long pollCount, Long voteCount) {
+    public UserProfile(Long id, String username, String name, Instant joinedAt) {
         this.id = id;
         this.username = username;
         this.name = name;
         this.joinedAt = joinedAt;
-        this.pollCount = pollCount;
-        this.voteCount = voteCount;
+//        this.pollCount = pollCount;
+//        this.voteCount = voteCount;
     }
 
     public Long getId() {
