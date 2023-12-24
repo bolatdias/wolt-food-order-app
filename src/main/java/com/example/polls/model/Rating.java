@@ -14,7 +14,7 @@ public class Rating {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Size(min = 0, max = 10)
+
     private int rate;
     @ManyToOne
     @JoinColumn(name ="user_id", nullable = false)
@@ -24,4 +24,33 @@ public class Rating {
     @JoinColumn(name = "product_id", nullable = false)
     private  Product product;
 
+
+    public Long getId() {
+        return id;
+    }
+
+
+    public int getRate() {
+        return rate;
+    }
+
+    public void setRate(int rate) {
+        this.rate = rate;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 }
