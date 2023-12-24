@@ -24,7 +24,19 @@ public class Order {
     private  Product product;
 
 
-    LocalDateTime orderTime = LocalDateTime.now();
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getOrderTime() {
+        return orderTime;
+    }
+
+    public void setOrderTime(LocalDateTime orderTime) {
+        this.orderTime = orderTime;
+    }
+
+    private LocalDateTime orderTime = LocalDateTime.now();
 
     public Long getId() {
         return id;

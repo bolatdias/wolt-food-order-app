@@ -1,11 +1,13 @@
 package com.example.polls.controller;
 
 import com.example.polls.exception.ResourceNotFoundException;
+import com.example.polls.model.Order;
 import com.example.polls.model.Product;
 import com.example.polls.model.Rating;
 import com.example.polls.model.User;
 import com.example.polls.payload.*;
 //import com.example.polls.repository.PollRepository;
+import com.example.polls.repository.OrderRepository;
 import com.example.polls.repository.RatingRepository;
 import com.example.polls.repository.UserRepository;
 //import com.example.polls.repository.VoteRepository;
@@ -31,6 +33,9 @@ public class UserController {
 
     @Autowired
     private RatingRepository ratingRepository;
+
+    @Autowired
+    private OrderRepository orderRepository;
 
 //    @Autowired
 //    private PollRepository pollRepository;
@@ -94,19 +99,27 @@ public class UserController {
 
 
     @GetMapping("users/ratings/{username}")
-    public ResponseEntity<List<Product>> getRatedProductsByUsername(@PathVariable(value = "username") String username) {
-        logger.info("Received request for username: {}", username);
-
-        List<Product> ratedProducts = ratingRepository.findRatedProductsByUsername(username);
-
-        logger.info("Found {} rated products.", ratedProducts.size());
+    public ResponseEntity<List<Rating>> getRatedProductsByUsername(@PathVariable(value = "username") String username) {
+        List<Rating> ratedProducts=ratingRepository.findRatingByUsername(username);
 
         if (ratedProducts.isEmpty()) {
-            logger.warn("No rated products found for username: {}", username);
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             return new ResponseEntity<>(ratedProducts, HttpStatus.OK);
         }
     }
 
+
+    @GetMapping("users/order/")
+    @PreAuthorize("hasRole('USER')")
+    public ResponseEntity<List<Order>> getOrderByUsername(
+            @CurrentUser UserPrincipal currentUser) {
+        List<Order> orderList=orderRepository.findOrderByUsername(currentUser.getUsername());
+
+        if (orderList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(orderList, HttpStatus.OK);
+        }
+    }
 }

@@ -1,34 +1,33 @@
 package com.example.polls.model;
 
-
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "rating")
+@Table(name = "rating", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"user_id", "product_id"})
+})
 public class Rating {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     private int rate;
+
     @ManyToOne
-    @JoinColumn(name ="user_id", nullable = false)
+    @JoinColumn(name ="user_id")
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "product_id", nullable = false)
-    private  Product product;
-
+    @JoinColumn(name = "product_id")
+    private Product product;
 
     public Long getId() {
         return id;
     }
-
 
     public int getRate() {
         return rate;
