@@ -4,6 +4,7 @@ import com.example.polls.model.Order;
 import com.example.polls.model.Rating;
 import com.example.polls.model.User;
 import com.example.polls.payload.ApiResponse;
+import com.example.polls.payload.ProductResponse;
 import com.example.polls.payload.RatingRequest;
 import com.example.polls.payload.UserSummary;
 import com.example.polls.repository.OrderRepository;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 
 
 @RestController
@@ -61,7 +63,7 @@ public class ProductController {
 
 
 
-    @PostMapping("product/order/{product_id}")
+    @PostMapping("/product/order/{product_id}")
     @PreAuthorize("hasRole('USER')")
     public  ResponseEntity createOrderById(
             @CurrentUser UserPrincipal currentUser,
@@ -77,4 +79,17 @@ public class ProductController {
     }
 
 
+    @GetMapping("product/{product_id}")
+    public ResponseEntity<ProductResponse> getProductById(
+            @PathVariable(value = "product_id") Long productId
+    ) {
+        ProductResponse productResponse = new ProductResponse();
+        productResponse.setProduct(productRepository.findById(productId).orElseThrow());
+        productResponse.setRate(ratingRepository.getRatingByProductId(productId));
+        if (productResponse.getProduct()==null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(productResponse, HttpStatus.OK);
+        }
+    }
 }
