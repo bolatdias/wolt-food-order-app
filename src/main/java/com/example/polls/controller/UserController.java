@@ -23,6 +23,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -122,4 +123,32 @@ public class UserController {
             return new ResponseEntity<>(orderList, HttpStatus.OK);
         }
     }
+
+
+
+    @DeleteMapping("order/delete/{order_id}")
+    @PreAuthorize("hasRole('USER')")
+    public ResponseEntity deleteOrderByUser(
+            @CurrentUser UserPrincipal currentUser,
+            @PathVariable(value="order_id") Long orderId
+    ) {
+
+        Optional<Order> optionalOrder = orderRepository.findById(orderId);
+
+        if (optionalOrder.isPresent()) {
+            Order order = optionalOrder.get();
+
+            if (order.getUser().getId().equals(currentUser.getId())) {
+
+                orderRepository.deleteById(orderId);
+
+                return ResponseEntity.ok().build();
+            } else {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You are not allowed to delete this order.");
+            }
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Order not found.");
+        }
+    }
+
 }
