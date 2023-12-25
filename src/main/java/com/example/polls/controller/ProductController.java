@@ -87,7 +87,10 @@ public class ProductController {
     ) {
         ProductResponse productResponse = new ProductResponse();
         productResponse.setProduct(productRepository.findById(productId).orElseThrow());
-        productResponse.setRate(ratingRepository.getRatingByProductId(productId));
+        Integer rating=ratingRepository.getRatingByProductId(productId);
+        if(rating==null){
+            rating=0;
+        }
         if (productResponse.getProduct() == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
@@ -99,7 +102,7 @@ public class ProductController {
     public List<ProductResponse> searchProducts(
             @RequestParam(name = "name", required = false) String searchTerm,
             @RequestParam(name = "minPrice", required = false, defaultValue = "0") Integer minPrice,
-            @RequestParam(name = "maxPrice", required = false, defaultValue = "20000") Integer maxPrice,
+            @RequestParam(name = "maxPrice", required = false, defaultValue = "9999") Integer maxPrice,
             @RequestParam(name = "minRating", required = false, defaultValue = "0") Integer minRating,
             @RequestParam(name = "maxRating", required = false, defaultValue = "10") Integer maxRating) {
 
