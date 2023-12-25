@@ -16,6 +16,15 @@ public interface RatingRepository extends JpaRepository<Rating,Long> {
 
 
     @Query("SELECT AVG(r.rate) FROM Rating r WHERE r.product.id = :product_id")
-    int getRatingByProductId(@Param("product_id") Long productId);
+    Integer getRatingByProductId(@Param("product_id") Long productId);
+
+
+    @Query("SELECT AVG(r.rate) FROM Rating r WHERE r.product.id = :product_id " +
+            "AND r.rate BETWEEN :minRating AND :maxRating")
+    Integer getRatingByProductId(
+            @Param("product_id") Long productId,
+            @Param("minRating") Integer minRating,
+            @Param("maxRating") Integer maxRating);
+
 
 }
