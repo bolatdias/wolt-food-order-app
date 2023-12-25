@@ -1,3 +1,7 @@
+INSERT IGNORE INTO roles(name) VALUES('ROLE_USER');
+INSERT IGNORE INTO roles(name) VALUES('ROLE_ADMIN');
+
+
 INSERT INTO products (name, cook_time, price)
 VALUES
     ('Burger King - Cheeseburger', 10, 7.99),
