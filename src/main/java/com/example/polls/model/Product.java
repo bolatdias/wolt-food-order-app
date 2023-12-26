@@ -18,7 +18,6 @@ public class Product {
     private  int cookTime;
 
 
-
     public Long getId() {
         return id;
     }

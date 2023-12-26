@@ -105,3 +105,6 @@ VALUES
     ('Pizza Hut - Meatball Marinara Pasta', 12, 6.99),
     ('Domino''s - Philly Cheese Steak Pizza', 18, 12.49);
 ;
+
+UPDATE products
+SET price = price * 300;
