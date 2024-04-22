@@ -40,7 +40,7 @@ docker compose up
 <p>2. Spring Boot Application Run</p>
 
 ```
-mvn clean package
+./mvnw spring-boot:run
 ```
 
 <p>3. React project instalization</p>
