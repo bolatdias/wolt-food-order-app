@@ -1,0 +1,15 @@
+.contacts-text {
+    color: #49ceff;
+  }
+  
+  .contacts-link {
+    text-decoration: none; /* Remove text decoration from links */
+    color: #49ceff; /* Set link color */
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .contacts-link:hover {
+    color: black; /* Change color on hover to black */
+    transform: translateX(10px); /* Move the link 10px to the right on hover */
+  }
+  

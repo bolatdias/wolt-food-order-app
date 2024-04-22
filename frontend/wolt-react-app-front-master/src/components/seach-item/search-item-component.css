@@ -1,0 +1,37 @@
+.search-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 75vw;
+    height: 100dvh;
+    overflow-y: auto;
+    margin: auto;
+
+    grid-column-gap: 20px;
+    grid-row-gap: 2em;
+}
+
+
+.search-container .product-card {
+    margin: 10px;
+    justify-content: space-between;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.search-container .product-card img {
+    width: 100%
+}
+
+@media only screen and (max-width: 767px) {
+    .search-container {}
+
+    .search-container .product-card {}
+
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+    .search-container .product-card {}
+}

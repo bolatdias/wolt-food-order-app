@@ -1,0 +1,53 @@
+.logo img{
+    width: 64px;
+}
+
+
+.login-nav-container{
+    display: flex;
+    width: 10vw;
+    justify-content: space-between;
+    margin-right: 10%;
+    min-width: 200px;
+    flex-direction: row;
+    align-items: center;
+}
+
+.nav-center-container{
+    display: flex;
+    justify-content: space-between;
+    width: 40vw;
+}
+
+
+.navbar-nav li.nav-item {
+    position: relative;
+}
+
+
+.navbar-nav li.nav-item a.nav-link {
+    color: #000; 
+    transition: color 0.3s ease; 
+}
+
+
+.navbar-nav li.nav-item a.nav-link:hover {
+    color: #49ceff; /* Set link color on hover */
+}
+
+
+.navbar-nav li.nav-item::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px; /* Adjust the height of the bottom border */
+    background-color: transparent; /* Set the initial color of the bottom border */
+    transition: background-color 0.3s ease; /* Add smooth transition effect */
+}
+
+.navbar-nav li.nav-item:hover::after {
+    background-color: #49ceff; 
+}

@@ -1,0 +1,33 @@
+.profile-header-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    height: 40vh;
+}
+
+.profile-header-container img{
+    position: absolute;
+    z-index: -1;
+    width: 100dvw;
+    height: 40vh;
+    object-fit: cover;
+    filter: blur(1.5px);
+}
+.profile-header-container h2{
+    padding-top: 2rem;
+}
+.profil-avatar {
+    width: '50px';
+    height: '50px';
+    border-radius: '50%';
+    background: '#3498db';
+    color: '#fff';
+    display: 'flex';
+    align-items: 'center';
+    justify-content: 'center';
+    font-size: '24px';
+}
