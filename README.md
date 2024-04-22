@@ -9,6 +9,8 @@
 ### Home Page
 ![Home Page](https://github.com/bolatdias/wolt-food-order-app/assets/133090331/c02f5740-28b9-4554-8f38-91211241fb57)
 
+![screencapture-localhost-3000-order-16-2024-04-22-18_45_45](https://github.com/bolatdias/wolt-food-order-app/assets/133090331/3aa44d93-359c-492f-b9e4-1acf88ffafc1)
+
 ### About Page
 ![About Page](https://github.com/bolatdias/wolt-food-order-app/assets/133090331/60083dd5-c0d5-4e4a-8e54-06ca611af311)
 
