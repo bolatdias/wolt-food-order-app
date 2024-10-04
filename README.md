@@ -27,7 +27,7 @@ Here're some of the project's best features:
 *   JWT token registration and authentication
 *   Users can rate products
 *   Users can order products
-*   Search sytem with filters
+*   Search system with filters
 
 <h2>🛠️ Installation Steps:</h2>
 
